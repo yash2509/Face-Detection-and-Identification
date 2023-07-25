@@ -10,8 +10,8 @@ from keras.layers import Input, Flatten, Dense
 from keras.models import Model
 
 IMAGE_SIZE = [218, 178]
-train_path = 'venv/Datasets/Train'
-valid_path = 'venv/Datasets/Test'
+train_path = 'Datasets/Train'
+valid_path = 'Datasets/Test'
 
 resnet = ResNet50(input_shape=IMAGE_SIZE + [3], weights='imagenet', include_top=False)
 for layer in resnet.layers[:10]:  # Specify the index range of layers you want to train
@@ -19,7 +19,7 @@ for layer in resnet.layers[:10]:  # Specify the index range of layers you want t
 for layer in resnet.layers[10:]:  # Set the remaining layers as frozen
     layer.trainable = False
 
-folders = glob('venv/Datasets/Train')
+folders = glob('Datasets/Train')
 num_classes =len(folders)+1
 print(num_classes)
 
